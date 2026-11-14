@@ -85,6 +85,7 @@ impl Feature {
             | Self::ApiBrowserAccess
             | Self::PrintStart
             | Self::ShellCompletions
+            | Self::CursorContext
             | Self::VoicePrompt => Group::Output,
             Self::KeepRecordings
             | Self::HistoryStats
