@@ -15,6 +15,12 @@ pub(super) fn table() -> &'static HashMap<&'static str, &'static str> {
 
 #[rustfmt::skip]
 const TRANSLATIONS: &[(&str, &str)] = &[
+    ("Open Hex when your computer starts?", "Открывать Hex при запуске компьютера?"),
+    ("Hex opens when your computer starts.", "Hex открывается при запуске компьютера."),
+    ("It's tiny. It naps in your system tray until you tap the key.", "Он крошечный. Дремлет в системном трее, пока вы не нажмёте клавишу."),
+    ("It's tiny. It naps in your system tray until you hold the key.", "Он крошечный. Дремлет в системном трее, пока вы не зажмёте клавишу."),
+    ("It's tiny. It naps in the background until you tap the key.", "Он крошечный. Дремлет в фоне, пока вы не нажмёте клавишу."),
+    ("It's tiny. It naps in the background until you hold the key.", "Он крошечный. Дремлет в фоне, пока вы не зажмёте клавишу."),
     ("Voice prompt", "Голосовая инструкция"),
     ("Copy captures as a zip", "Копировать записи как zip"),
     ("A finished capture copies as one zip file, without video or audio.", "Готовая запись копируется одним zip-файлом, без видео и звука"),

@@ -45,6 +45,7 @@ pub(super) const SCENES: &[&str] = &[
     "mac-onboarding-reopen",
     // Hex is ready.
     "onboarding-ready",
+    "windows-onboarding-ready",
     "mac-onboarding-ready",
 ];
 

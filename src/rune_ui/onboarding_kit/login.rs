@@ -8,6 +8,7 @@ use rune_kit::{Button, ButtonVariant, glyphs};
 use super::super::Ui;
 use super::super::controls::{Paint, PushSize};
 use super::super::platform::{PlatformRequest, PlatformState};
+use super::landing::Home;
 use crate::desktop::i18n::tr;
 use crate::desktop::login_item::LoginItemStatus;
 
@@ -141,9 +142,10 @@ fn burst(p: Paint, ask: &LoginAsk, now: f64, reduced: bool) -> Option<El> {
     )
 }
 
-/// `"Open Hex when your Mac starts?"`, its button, and a line under it.
+/// The platform's startup question, its button, and a line under it.
 /// The button is the page's main action only when it is `alone`: beside
 /// Start using Hex it is a neutral one.
+#[allow(clippy::too_many_arguments)]
 pub(crate) fn login_ask<S: 'static>(
     p: Paint,
     ask: &LoginAsk,
@@ -151,13 +153,17 @@ pub(crate) fn login_ask<S: 'static>(
     reduced: bool,
     alone: bool,
     toggle: bool,
+    home: Home,
     press: impl Fn(&mut S) + 'static,
 ) -> Option<El> {
     let k = p.k;
     let (question, button, line) = match ask.login {
         Login::Hidden => return None,
         Login::Off => (
-            tr("Open Hex when your Mac starts?"),
+            match home {
+                Home::MenuBar => tr("Open Hex when your Mac starts?"),
+                Home::Tray | Home::Launcher => tr("Open Hex when your computer starts?"),
+            },
             Button::new(tr("Launch at login"))
                 .rolling("login-label")
                 .variant(if alone {
@@ -165,14 +171,32 @@ pub(crate) fn login_ask<S: 'static>(
                 } else {
                     ButtonVariant::Neutral
                 }),
-            if toggle {
-                tr("It's tiny. It naps in your menu bar until you tap the key.")
-            } else {
-                tr("It's tiny. It naps in your menu bar until you hold the key.")
+            match (home, toggle) {
+                (Home::MenuBar, true) => {
+                    tr("It's tiny. It naps in your menu bar until you tap the key.")
+                }
+                (Home::MenuBar, false) => {
+                    tr("It's tiny. It naps in your menu bar until you hold the key.")
+                }
+                (Home::Tray, true) => {
+                    tr("It's tiny. It naps in your system tray until you tap the key.")
+                }
+                (Home::Tray, false) => {
+                    tr("It's tiny. It naps in your system tray until you hold the key.")
+                }
+                (Home::Launcher, true) => {
+                    tr("It's tiny. It naps in the background until you tap the key.")
+                }
+                (Home::Launcher, false) => {
+                    tr("It's tiny. It naps in the background until you hold the key.")
+                }
             },
         ),
         Login::On => (
-            tr("Hex opens when your Mac starts."),
+            match home {
+                Home::MenuBar => tr("Hex opens when your Mac starts."),
+                Home::Tray | Home::Launcher => tr("Hex opens when your computer starts."),
+            },
             Button::new(tr("Launches at login"))
                 .rolling("login-label")
                 .icon(&glyphs::CHECK)

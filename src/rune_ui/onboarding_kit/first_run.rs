@@ -313,6 +313,7 @@ fn ready_page(p: Paint, s: &Onboard) -> El {
                     s.reduced.get(),
                     false,
                     s.toggle,
+                    s.home,
                     login::toggle,
                 )
                 .map(|ask| ask.transition(arrives())),
@@ -347,6 +348,7 @@ fn ready_page(p: Paint, s: &Onboard) -> El {
         s.reduced.get(),
         true,
         s.toggle,
+        s.home,
         |s: &mut Onboard| {
             let next = if s.login.login == Login::On {
                 Login::Off

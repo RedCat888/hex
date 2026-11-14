@@ -318,6 +318,11 @@ pub(super) const SCENES: &[Scene] = &[
     ("onboarding-ready", |ui| {
         first_run(ui, FirstRun::Ready, Page::Ready)
     }),
+    ("windows-onboarding-ready", |ui| {
+        first_run(ui, FirstRun::Ready, Page::Ready);
+        ui.platform = platform::PlatformState::preview(platform::Capabilities::WINDOWS);
+        onboarding_kit::live::fixture(ui, Page::Ready);
+    }),
     // Windows with its microphone privacy switch off.
     ("windows-onboarding-microphone", |ui| {
         *ui = fixture(DesktopShortcuts::Registered);

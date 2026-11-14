@@ -295,6 +295,8 @@ Launch Hex, setup incomplete              // setup.tour; every build and OS, ful
 │       Check: `a_shortcut_that_did_not_start_shows_only_reopen`
 └── Hex is ready -> where Hex lives (menu bar, system tray, or app launcher)
     ├── macOS: "Open Hex when your Mac starts?" + Launch at login
+    ├── Windows/Linux: "Open Hex when your computer starts?" + Launch at login
+    │   └── idle hint: system tray on Windows, background on Linux; menu bar on macOS
     ├── Try again -> back to the practice game
     └── Start using Hex -> records completion once setup is ready; closes onboarding
 Run setup again (Labs) or `hex onboarding reset` -> the same story from the start,
