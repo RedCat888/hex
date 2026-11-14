@@ -44,7 +44,11 @@ light or dark instead of following the OS, while the HUD and other overlays
 keep following it; its Screen vocabulary
 toggle (off by default, macOS) uses names and terms visible in the focused
 window as temporary vocabulary for each dictation, read locally through
-Accessibility and never saved ([vocabulary.md](vocabulary.md)).
+Accessibility and never saved ([vocabulary.md](vocabulary.md)); its Clean up
+with Apple Intelligence toggle (off by default, macOS) gives each dictation
+its mode does not rewrite one short on-device pass that fixes clearly
+misheard words and spoken self-corrections, pasting the corrected text
+whenever Apple Intelligence is unavailable, slow, or refuses.
 General › Advanced › Interface language offers Português (Brasil), and Hex
 uses it for any Portuguese system language (#867); it also offers Français,
 used for any French system language (#892), and Русский, used for any

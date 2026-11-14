@@ -27,6 +27,7 @@ pub enum Feature {
     ReturnToApp,
     SpokenFormatting,
     FillerWords,
+    CleanUpWithAppleIntelligence,
     SubtitleExport,
     SecondDictationShortcut,
     TerminalPasteShortcut,
@@ -87,7 +88,7 @@ pub enum Feature {
 }
 
 impl Feature {
-    pub const ALL: [Self; 79] = [
+    pub const ALL: [Self; 80] = [
         Self::Meetings,
         Self::VoiceFilter,
         Self::Playground,
@@ -110,6 +111,7 @@ impl Feature {
         Self::ReturnToApp,
         Self::SpokenFormatting,
         Self::FillerWords,
+        Self::CleanUpWithAppleIntelligence,
         Self::SubtitleExport,
         Self::SecondDictationShortcut,
         Self::TerminalPasteShortcut,
